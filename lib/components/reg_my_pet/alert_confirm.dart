@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:petsaojoao/models/back_reg_my_pet/camera_functions.dart';
 import 'package:petsaojoao/models/back_reg_my_pet/orientation_organize.dart';
+import 'package:petsaojoao/models/back_reg_my_pet/picture_upload_firebase.dart';
 
 import 'package:petsaojoao/screens/dashboard/dashboard.dart';
+
 
 class PopUpSelector {
   void showDelete(context, num) => showDialog(
@@ -68,7 +70,7 @@ class PopUpSelector {
           ),
       barrierDismissible: false);
 
-  void showRedirect(context, function) => showDialog(
+  showRedirect(context) async => showDialog(
       context: context,
       builder: (context) => AlertDialog(
             title: Center(
@@ -104,8 +106,7 @@ class PopUpSelector {
               ),FlatButton(
                 onPressed: () {
                   releaseOrientation();
-                  Navigator.pop(context);
-                  function();
+                  FirebaseUpload().saving(context);
                 },
                 child: Text("Tentar Novamente"),
               ),

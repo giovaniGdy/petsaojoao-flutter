@@ -1,14 +1,32 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:petsaojoao/models/back_reg_my_pet/get_information_for_pictures.dart';
+import 'package:petsaojoao/components/reg_my_pet/alert_confirm.dart';
 
 import 'package:petsaojoao/services/repo_reg_my_pet.dart/api_rest_reg_my_pet_photos.dart';
 
+
 class FirebaseUpload {
+
+  saving(context) async {
+    PopUpSelector().showLoading(context);
+
+    final resp = await FirebaseUpload().sendToServer();
+
+    if (resp == 'complete') {
+      Navigator.pop(context);
+      PopUpSelector().closePopup(context);
+    } else {
+      Navigator.pop(context);
+      await PopUpSelector().showRedirect(context);
+    }
+  }
+
   sendToServer() async {
     int _tutorId = await GetInformation().getTutorId();
     int _petId = await GetInformation().getPetId();
@@ -66,8 +84,7 @@ class FirebaseUpload {
     if (response == null) {
       return null;
     } else {
-      String res =
-      await uploadThirdPicture(pathImg3, _tutorId, _petId);
+      String res = await uploadThirdPicture(pathImg3, _tutorId, _petId);
       return res;
     }
   }

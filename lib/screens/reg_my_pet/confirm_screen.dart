@@ -159,7 +159,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.check),
           onPressed: () async {
-            saving(context);
+            FirebaseUpload().saving(context);
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -168,16 +168,4 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   }
 }
 
-saving(context) async {
-  PopUpSelector().showLoading(context);
 
-  final resp = await FirebaseUpload().sendToServer();
-
-  if (resp == 'complete') {
-    Navigator.pop(context);
-    PopUpSelector().closePopup(context);
-
-  } else {
-    PopUpSelector().showRedirect(context, saving(context));
-  }
-}
