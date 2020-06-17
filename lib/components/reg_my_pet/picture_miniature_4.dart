@@ -13,7 +13,8 @@ pictureMiniatureFour(context) {
             Center(
               child: Text(
                 "Tirar Nova Foto",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,
+                    color: Colors.black54),
               ),
             ),
           ],

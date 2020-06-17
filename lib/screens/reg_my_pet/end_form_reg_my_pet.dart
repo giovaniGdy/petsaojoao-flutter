@@ -8,7 +8,13 @@ import 'package:petsaojoao/screens/reg_my_pet/my_pet_info_second.dart';
 import 'package:petsaojoao/screens/reg_my_pet/my_pet_info_third.dart';
 import 'package:petsaojoao/services/repo_reg_my_pet/api_rest_reg_my_pet.dart';
 
+int id;
+
 class EndFormRegMypet extends StatefulWidget {
+  int getId() {
+    return id;
+  }
+  
   @override
   _EndFormRegMypetState createState() => _EndFormRegMypetState();
 }
@@ -37,12 +43,10 @@ class _EndFormRegMypetState extends State<EndFormRegMypet> {
         _labelScreem = dataError;
       });
     } else {
-      // var tutorId = result.id;
-      //  var tutorEmail = result.email;
+      var petId = result;
       var dataOk = "Pronto!";
       setState(() {
-        //    id = tutorId;
-        // email = tutorEmail;
+        id = petId;
         _labelScreem = dataOk;
       });
       DrawerBottonPositive().show(context);

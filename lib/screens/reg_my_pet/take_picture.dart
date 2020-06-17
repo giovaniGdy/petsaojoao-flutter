@@ -87,7 +87,7 @@ class _TakePictureState extends State<TakePicture> {
                   Miniatures()
                       .selector(context, _num, _image1, _image2, _deleting),
                   Divider(
-                    color: Colors.black,
+                    color: Colors.black54,
                     thickness: 1.5,
                   )
                 ],

@@ -13,13 +13,15 @@ pictureMiniatureTwo(context, image1) {
             Container(
               child: Text(
                 "1 de 3 ",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,
+                    color: Colors.black54),
               ),
             ),
             Container(
               child: Text(
                 'fotos registradas',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20,
+                    color: Colors.black54),
               ),
             ),
           ],
@@ -30,6 +32,7 @@ pictureMiniatureTwo(context, image1) {
             children: <Widget>[
               Container(
                 height: CalculateSize().by(context, 10),
+                padding: EdgeInsets.only(top: 8),
                 child: Image.file(File(image1)),
               ),
             ],

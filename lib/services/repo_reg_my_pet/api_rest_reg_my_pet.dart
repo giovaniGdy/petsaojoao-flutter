@@ -56,7 +56,7 @@ class ApiRestRegMyPet {
     return resp;
   }
 
-  static Future<String> post(
+  static Future<int> post(
     String name,
     int breedId,
     String genere,
@@ -105,7 +105,7 @@ class ApiRestRegMyPet {
         print('Response body: ${response.body}');
         Map<String, dynamic> resp = jsonDecode(response.body);
         //debugPrint(resp['id'].toString());
-        var _id = resp['id'].toString();
+        var _id = resp['id'];
 
         return _id;
       } else {

@@ -10,7 +10,7 @@ import 'package:petsaojoao/screens/register_tutor/personal_info.dart';
 import 'package:petsaojoao/services/repo_reg_tutor/api_rest_tutor.dart';
 import 'contact_info.dart';
 
-var id;
+int id;
 var email;
 
 class EndRegisterTutor extends StatefulWidget {

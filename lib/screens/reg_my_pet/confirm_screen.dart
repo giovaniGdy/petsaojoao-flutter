@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:petsaojoao/models/back_reg_my_pet/sizes_info.dart';
 import 'package:petsaojoao/components/reg_my_pet/alert_confirm.dart';
 import '../../models/back_reg_my_pet/sizes_info.dart';
+import 'package:petsaojoao/models/back_reg_my_pet/picture_upload_firebase.dart';
 
-import 'package:petsaojoao/screens/reg_my_pet/end_register_pet_photos.dart';
+import 'package:petsaojoao/screens/dashboard/dashboard.dart';
 
 class ConfirmScreen extends StatefulWidget {
   final String image1;
@@ -69,7 +70,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                     child: Icon(
                       Icons.delete,
                       size: CalculateSize().by(context, 18),
-                      color: Colors.red[200],
+                      color: Colors.white,
                     ),
                   ),
                 )
@@ -82,14 +83,16 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   Container(
                     child: Text(
                       "3 de 3 ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Colors.black54),
                     ),
                   ),
                   Container(
                     child: Text(
                       'fotos registradas',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20, color: Colors.black54),
                     ),
                   ),
                 ],
@@ -147,7 +150,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               ),
             ),
             Divider(
-              color: Colors.black,
+              color: Colors.black54,
               thickness: 2,
             ),
           ],
@@ -156,11 +159,24 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.check),
           onPressed: () async {
-            Navigator.push(context, MaterialPageRoute( builder: (contexto) => EndRegisterPetPhotos()));
+            saving(context);
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
+  }
+}
+
+saving(context) async {
+  PopUpSelector().showLoading(context);
+
+  final resp = await FirebaseUpload().sendToServer();
+
+  if (resp == 'complete') {
+    PopUpSelector().fecharpopup(context);
+
+  } else {
+    PopUpSelector().showRedirect(context, saving(context));
   }
 }

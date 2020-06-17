@@ -11,13 +11,16 @@ pictureMiniatureOne(context) {
             Container(
               child: Text(
                 "0 de 3 ",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.black54),
               ),
             ),
             Container(
               child: Text(
                 'fotos registradas',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
           ],

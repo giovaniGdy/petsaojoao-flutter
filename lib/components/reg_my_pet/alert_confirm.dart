@@ -68,29 +68,31 @@ class PopUpSelector {
           ),
       barrierDismissible: true);
 
-  void showRedirect(context) => showDialog(
+  void showRedirect(context, function) => showDialog(
       context: context,
       builder: (context) => AlertDialog(
             title: Center(
               child: Column(
                 children: [
                   Icon(
-                    Icons.check_circle,
+                    Icons.error,
                     size: 30,
-                    color: Colors.green[900],
+                    color: Colors.red[900],
                   ),
-                  Text("Pronto!"),
+                  Text("Erro!"),
                 ],
               ),
             ),
             content: Text(
-              "Suas imagens foram salvas em nosso sistema!",
+              "Ops... Parece que ocorreu um erro...",
               style: TextStyle(color: Colors.black54),
             ),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
                   releaseOrientation();
+
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -98,9 +100,30 @@ class PopUpSelector {
                     ),
                   );
                 },
-                child: Text("ok"),
+                child: Text("Cancelar"),
+              ),FlatButton(
+                onPressed: () {
+                  releaseOrientation();
+                  Navigator.pop(context);
+                  function;
+                },
+                child: Text("Tentar Novamente"),
               ),
             ],
           ),
       barrierDismissible: true);
+
+  fecharpopup(context) async {
+    await Navigator.pop(context);
+
+    voltarDash(context);
+  }
+  voltarDash(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Dashboard(),
+      ),
+    );
+  }
 }
