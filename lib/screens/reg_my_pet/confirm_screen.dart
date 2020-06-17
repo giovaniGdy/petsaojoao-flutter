@@ -174,7 +174,8 @@ saving(context) async {
   final resp = await FirebaseUpload().sendToServer();
 
   if (resp == 'complete') {
-    PopUpSelector().fecharpopup(context);
+    Navigator.pop(context);
+    PopUpSelector().closePopup(context);
 
   } else {
     PopUpSelector().showRedirect(context, saving(context));

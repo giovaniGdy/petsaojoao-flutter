@@ -43,7 +43,7 @@ class PopUpSelector {
               ),
             ],
           ),
-      barrierDismissible: true);
+      barrierDismissible: false);
 
   void showLoading(context) => showDialog(
       context: context,
@@ -105,20 +105,19 @@ class PopUpSelector {
                 onPressed: () {
                   releaseOrientation();
                   Navigator.pop(context);
-                  function;
+                  function();
                 },
                 child: Text("Tentar Novamente"),
               ),
             ],
           ),
-      barrierDismissible: true);
+      barrierDismissible: false);
 
-  fecharpopup(context) async {
-    await Navigator.pop(context);
+  closePopup(context) async {
 
-    voltarDash(context);
+    backDash(context);
   }
-  voltarDash(context) {
+  backDash(context) {
     Navigator.push(
       context,
       MaterialPageRoute(

@@ -5,7 +5,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:petsaojoao/models/back_reg_my_pet/get_information_for_pictures.dart';
-import 'package:petsaojoao/components/reg_my_pet/alert_confirm.dart';
 
 import 'package:petsaojoao/services/repo_reg_my_pet.dart/api_rest_reg_my_pet_photos.dart';
 
