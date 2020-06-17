@@ -66,7 +66,7 @@ class PopUpSelector {
               style: TextStyle(color: Colors.black54),
             ),
           ),
-      barrierDismissible: true);
+      barrierDismissible: false);
 
   void showRedirect(context, function) => showDialog(
       context: context,
